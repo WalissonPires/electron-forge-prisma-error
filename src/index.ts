@@ -49,8 +49,13 @@ app.on('activate', () => {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
 import { PrismaClient } from "@prisma/client";
+import path from "path";
 
-const prisma = new PrismaClient();
-prisma.user.findFirst({})
-  .then(user => console.log('Found user:', user))
-  .catch(error => console.error(error));
+process.env.PRISMA_QUERY_ENGINE_LIBRARY = path.join(__dirname, 'native_modules', 'client', 'query_engine-windows.dll.node');
+
+//setInterval(() => {
+  const prisma = new PrismaClient();
+  prisma.user.findFirst({})
+    .then(user => console.log('Found user:', user))
+    .catch(error => console.error(error));
+//}, 10_000);

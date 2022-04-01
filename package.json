@@ -9,7 +9,8 @@
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "lint": "eslint --ext .ts,.tsx ."
+    "lint": "eslint --ext .ts,.tsx .",
+    "prisma-generate": "npx prisma generate && node fix-prisma-client.js"
   },
   "keywords": [],
   "license": "MIT",
